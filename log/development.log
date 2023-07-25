@@ -1,0 +1,2217 @@
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230722125551)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230722125551"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-07-22 13:01:11.788402"], ["updated_at", "2023-07-22 13:01:11.788402"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2023-07-22 18:31:27 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk2", "email"=>"kkkk2@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 534)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:110:in `block in run_callbacks'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:139:in `run_callbacks'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.6.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.6.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.6.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/cookies.rb:654:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users" for ::1 at 2023-07-22 18:32:59 +0530
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk2", "email"=>"kkkk2@gmail.com", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+Completed 422 Unprocessable Entity in 406ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 16021)
+
+
+Started POST "/users" for ::1 at 2023-07-22 18:33:18 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk3", "email"=>"kkkk3@gmail.com", "password"=>"[FILTERED]"}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+Completed 422 Unprocessable Entity in 361ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 4823)
+
+
+Started POST "/users" for ::1 at 2023-07-22 18:34:21 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk3", "email"=>"kkkk3@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@gmail.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk3"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "kkkk3"], ["email", "kkkk3@gmail.com"], ["password_digest", "$2a$12$uayLhycuHe8K1tzL3OT9SOmM7NWjJXkGAv9DSUNDhzn8Wkg4C6wYS"], ["created_at", "2023-07-22 13:04:43.802119"], ["updated_at", "2023-07-22 13:04:43.802119"]]
+  ↳ (byebug):1:in `create'
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[35m (1.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "kkkk3@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "kkkk3"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 41396ms (Views: 0.9ms | ActiveRecord: 29.5ms | Allocations: 1201853)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/users_controller.rb:17:in `create'
+Started POST "/users" for ::1 at 2023-07-22 18:35:29 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk3", "email"=>"kkkk3@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk3"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+Completed 422 Unprocessable Entity in 371ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 10707)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Destroy (11.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/users" for ::1 at 2023-07-22 18:36:46 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "kkkk1"], ["email", "kkkk1@gmail.com"], ["password_digest", "$2a$12$Yccgk/bVk5Ewe.ncD52h5epDSfnbg1AxkfC2oVOQs6DPl6LosQCeO"], ["created_at", "2023-07-22 13:06:46.887989"], ["updated_at", "2023-07-22 13:06:46.887989"]]
+  ↳ app/controllers/users_controller.rb:15:in `create'
+  [1m[35m (16.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:15:in `create'
+Completed 201 Created in 382ms (Views: 0.4ms | ActiveRecord: 17.2ms | Allocations: 6952)
+
+
+Started POST "/auth/login" for ::1 at 2023-07-22 18:37:06 +0530
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 441)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:110:in `block in run_callbacks'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:139:in `run_callbacks'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.6.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.6.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.6.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/cookies.rb:654:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2023-07-22 18:38:36 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 446)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:110:in `block in run_callbacks'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:139:in `run_callbacks'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.6.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.6.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.6.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/cookies.rb:654:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2023-07-22 18:39:09 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms | Allocations: 444)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:110:in `block in run_callbacks'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:139:in `run_callbacks'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.6.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.6.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.6.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/cookies.rb:654:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2023-07-22 18:41:49 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms | Allocations: 549)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+actionpack (6.0.6.1) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:200:in `block (2 levels) in halting'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:201:in `block in halting'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:110:in `block in run_callbacks'
+actiontext (6.0.6.1) lib/action_text/rendering.rb:19:in `with_renderer'
+actiontext (6.0.6.1) lib/action_text/engine.rb:55:in `block (4 levels) in <class:Engine>'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:121:in `instance_exec'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:139:in `run_callbacks'
+actionpack (6.0.6.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.6.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.6.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.6.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.6.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.6.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.6.1) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.6.1) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.6.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.6.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.6.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.7) lib/rack/etag.rb:27:in `call'
+rack (2.2.7) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.7) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.7) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/cookies.rb:654:in `call'
+activerecord (6.0.6.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/login" for ::1 at 2023-07-22 18:42:40 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk1@gmail.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `login'
+  [1m[36mCACHE User Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 380858ms (ActiveRecord: 3.1ms | Allocations: 76387)
+
+
+  
+NameError (uninitialized constant AuthenticationController::JsonWebToken):
+  
+app/controllers/authentication_controller.rb:9:in `login'
+Started POST "/auth/login" for ::1 at 2023-07-22 18:49:52 +0530
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthenticationController#login as */*
+  Parameters: {"username"=>"kkkk1", "email"=>"kkkk1@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 38272ms (Views: 1.0ms | ActiveRecord: 3.9ms | Allocations: 472337)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveAdminComments (20230722140050)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_type" varchar, "resource_id" integer, "author_type" varchar, "author_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230722140050"]]
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin" for ::1 at 2023-07-22 19:32:13 +0530
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::DashboardController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb (Duration: 717.5ms | Allocations: 226895)
+Completed 200 OK in 747ms (Views: 720.3ms | ActiveRecord: 0.0ms | Allocations: 230232)
+
+
+Started GET "/admin/comments" for ::1 at 2023-07-22 19:32:18 +0530
+Processing by Admin::CommentsController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ?[0m  [["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Load (0.2ms)[0m  [1m[34mSELECT "active_admin_comments".* FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ? ORDER BY "active_admin_comments"."id" desc LIMIT ? OFFSET ?[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb (Duration: 94.8ms | Allocations: 39716)
+Completed 200 OK in 117ms (Views: 96.7ms | ActiveRecord: 1.7ms | Allocations: 43277)
+
+
+Started GET "/admin/dashboard" for ::1 at 2023-07-22 19:32:19 +0530
+Processing by Admin::DashboardController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb (Duration: 25.2ms | Allocations: 14256)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.0ms | Allocations: 14694)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/admin/dashboard" for ::1 at 2023-07-22 19:32:58 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Admin::DashboardController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/page/index.html.arb (Duration: 20.4ms | Allocations: 14555)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms | Allocations: 15257)
+
+
+Started GET "/admin/users" for ::1 at 2023-07-22 19:33:00 +0530
+Processing by Admin::UsersController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb (Duration: 71.6ms | Allocations: 36885)
+Completed 200 OK in 82ms (Views: 74.1ms | ActiveRecord: 1.5ms | Allocations: 39150)
+
+
+Started POST "/users" for ::1 at 2023-07-23 11:56:55 +0530
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.6.1) lib/active_record/migration.rb:586:in `check_pending!'
+activerecord (6.0.6.1) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.6.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.6.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.6.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.6.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.7) lib/rack/method_override.rb:24:in `call'
+rack (2.2.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.7) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.6.1) lib/action_dispatch/middleware/host_authorization.rb:103:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.0.6.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.12) lib/puma/configuration.rb:228:in `call'
+puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
+puma (4.3.12) lib/puma/server.rb:476:in `process_client'
+puma (4.3.12) lib/puma/server.rb:332:in `block in run'
+puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColToUsers (20230723051444)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "otp" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "otp_expiration" datetime[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230723051444"]]
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2023-07-23 11:57:34 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk2", "email"=>"kkkk2@yopmail.com", "password"=>"[FILTERED]"}
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:53:in `user_params'
+app/controllers/users_controller.rb:14:in `create'
+Started POST "/users" for ::1 at 2023-07-23 11:58:09 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk2", "email"=>"kkkk2@yopmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk2@yopmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk2"], ["email", "kkkk2@yopmail.com"], ["password_digest", "$2a$12$MiSudVBQNqabYOVdu78Dp.iOHpzLXcUNOtHCkX957Pg5o4mnRT.oS"], ["created_at", "2023-07-23 06:28:09.912656"], ["updated_at", "2023-07-23 06:28:09.912656"], ["otp", "413710"], ["otp_expiration", "2023-07-23 06:33:09.912741"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 469ms (ActiveRecord: 11.5ms | Allocations: 178362)
+
+
+  
+NameError (undefined local variable or method `user' for #<UsersController:0x0000562b09830808>
+Did you mean?  @user):
+  
+app/controllers/users_controller.rb:17:in `create'
+Started POST "/users" for ::1 at 2023-07-23 11:58:43 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk2", "email"=>"kkkk2@yopmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk2@yopmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 422 Unprocessable Entity in 215ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 11505)
+
+
+Started POST "/users" for ::1 at 2023-07-23 11:58:56 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk3", "email"=>"kkkk3@yopmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@yopmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk3"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk3"], ["email", "kkkk3@yopmail.com"], ["password_digest", "$2a$12$KyryUijTdCO1.zudjSBLcuLZitaT.QCoi0QnR5k1jRCXxHhWyKCBW"], ["created_at", "2023-07-23 06:28:56.888736"], ["updated_at", "2023-07-23 06:28:56.888736"], ["otp", "947615"], ["otp_expiration", "2023-07-23 06:33:56.888797"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (24.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: e1b85749-5a8b-4d03-b3a0-2812519062b0) to Async(default) with arguments: 4
+Completed 201 Created in 257ms (Views: 0.2ms | ActiveRecord: 25.3ms | Allocations: 7309)
+
+
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0] Performing SendOtpJob (Job ID: e1b85749-5a8b-4d03-b3a0-2812519062b0) from Async(default) enqueued at 2023-07-23T06:28:56Z with arguments: 4
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 20.5ms | Allocations: 7211)
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0] UserMailer#otp_email: processed outbound mail in 130.0ms
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0] Delivered mail 64bcc8a91d7b3_37e22b15853371cc381c4@taskcraft-IdeaPad-3-15IML05-U.mail (3088.4ms)
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0] Date: Sun, 23 Jul 2023 11:58:57 +0530
+From: from@example.com
+To: kkkk3@yopmail.com
+Message-ID: <64bcc8a91d7b3_37e22b15853371cc381c4@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcc8a91d2fb_37e22b15853371cc380b1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcc8a91d2fb_37e22b15853371cc380b1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcc8a9181e6_37e22b15853371cc379c6@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcc8a91d2fb_37e22b15853371cc380b1
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcc8a9181e6_37e22b15853371cc379c6@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABfUlEQVR4nO2Z
+MZKDMAxFLVJAlyOYm2IfjZvADZIOikUryd7NMGnSrM2Ov4oEPG/GGoz0JdHx
+J/bo3EcGDBgwYMCAXQTbKdvoWH4H52Je6Kr71hBGqZAIbr/J3yYr3ha2C/jW
+Ehbze88kR6FXu4XGJXxrDyO2jFR2U2BvNjEfxTcFZvb27HuRheWPNwV2wjhV
+REGv46i6sNrCcMaq+NYM1v9MW5b+i8I6WGiYHdV9awqLqVXQQsmzHgVioTQm
+VSnPcgAmDtOsXdvYW/uArq0gRvLE+0Obhltq3YKeTPDISAUxUQMaUwMtychv
+TKIQOSpq+9YOpnOLRbJPzEJAOSD8ExmpHCbvvdPsM/FTk5GOMUyir+BbO9hp
+phrWe1aDSHfoQkHsd6aq5iUgaLQsdQXfWsLyTNUKJRMHU2xUqlWxVB6hUq2D
+pa88nMJgmvGtrSyWZ6qpc5Bb7RekgUYsFMReM9XcRbv8wQ2xUA57zVSdhoEe
+hcdMFRgwYMCA/UvsG4m+5iTKqWHMAAAAAElFTkSuQmCC
+
+----==_mimepart_64bcc8a91d2fb_37e22b15853371cc380b1--
+
+[ActiveJob] [SendOtpJob] [e1b85749-5a8b-4d03-b3a0-2812519062b0] Error performing SendOtpJob (Job ID: e1b85749-5a8b-4d03-b3a0-2812519062b0) from Async(default) in 3282.98ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2023-07-23 12:00:06 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk3", "email"=>"kkkk3@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk3"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 422 Unprocessable Entity in 204ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 4824)
+
+
+Started POST "/users" for ::1 at 2023-07-23 12:00:13 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk4", "email"=>"kkkk3@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk3@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk4"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk4"], ["email", "kkkk3@maillinator.com"], ["password_digest", "$2a$12$zMuXL9vKfHvUrNZhe28bv.b7NVj9F81/qHPpRYaRiNlGgYMRuhCKW"], ["created_at", "2023-07-23 06:30:13.589874"], ["updated_at", "2023-07-23 06:30:13.589874"], ["otp", "664523"], ["otp_expiration", "2023-07-23 06:35:13.589912"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: 4ecaa20b-2833-46cd-bfdd-2328366fd2d6) to Async(default) with arguments: 5
+Completed 201 Created in 231ms (Views: 0.2ms | ActiveRecord: 10.5ms | Allocations: 7084)
+
+
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6] Performing SendOtpJob (Job ID: 4ecaa20b-2833-46cd-bfdd-2328366fd2d6) from Async(default) enqueued at 2023-07-23T06:30:13Z with arguments: 5
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.9ms | Allocations: 1262)
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6] UserMailer#otp_email: processed outbound mail in 54.6ms
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6] Delivered mail 64bcc8f5a2085_37e22b15853371cc38442@taskcraft-IdeaPad-3-15IML05-U.mail (2525.0ms)
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6] Date: Sun, 23 Jul 2023 12:00:13 +0530
+From: from@example.com
+To: kkkk3@maillinator.com
+Message-ID: <64bcc8f5a2085_37e22b15853371cc38442@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcc8f5a1acb_37e22b15853371cc383e1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcc8f5a1acb_37e22b15853371cc383e1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcc8f5a170a_37e22b15853371cc382a2@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcc8f5a1acb_37e22b15853371cc383e1
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcc8f5a170a_37e22b15853371cc382a2@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABgUlEQVR4nO2Z
+TZKDIBCFwSxw5xHkJjka8WjeRG8w2Y2LSHgNmKqZTVaIxWNhma4vlRby+s/O
+f7N+OvXVIkaMGDFixCrBNp2WxZ0NlikZutN9awjTsZB4KLMrN/fBMorhtwLf
+WsKm43+vxifusioq8K05bLtFQRT9UWJ/PssBbP++XIVvDWDO+6yAFXlBmZAW
+ljp8awXzsSJ6QAbTHTl5FUNfgW/NYCZPWxZEpHXYIQ1Z++m+NYVNsVXYIIgg
+jXTJGeISj3B1LOy9yMDNAwQglWroIRiRimISh/qw7VahcxjQvwUZOHZtRTF9
+bLsEIwSocDLhPJgXimKTVamBdosYJEoxL5TFpF+QECSVqmQIbQ21UA77zFRR
+s87SOWCNzAslsWOmiq7NojyyEpFq8K0lLM9Ufd57g4jEvHAKhsro7l86vlpY
+WSOdgmGyvepbLlyf1EJRLM1UjcgATQNUwRqpKHbMVJWK2TmNkJgXCmKfmSqq
+JRmsyhvohVogRowYMWJXw94FPeck3rq5NgAAAABJRU5ErkJggg==
+
+----==_mimepart_64bcc8f5a1acb_37e22b15853371cc383e1--
+
+[ActiveJob] [SendOtpJob] [4ecaa20b-2833-46cd-bfdd-2328366fd2d6] Error performing SendOtpJob (Job ID: 4ecaa20b-2833-46cd-bfdd-2328366fd2d6) from Async(default) in 2582.69ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2023-07-23 12:01:14 +0530
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk5", "email"=>"kkkk5@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk5@maillinator.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk5"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk5"], ["email", "kkkk5@maillinator.com"], ["password_digest", "$2a$12$fNlfDStLhZTmz.RZAdGwr.JVeGWtgpw28wKPxh5Uooh/MnZjzKWbG"], ["created_at", "2023-07-23 06:31:40.948925"], ["updated_at", "2023-07-23 06:31:40.948925"], ["otp", "579564"], ["otp_expiration", "2023-07-23 06:36:40.949127"]]
+  ↳ (byebug):1:in `create'
+  [1m[35m (10.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "kkkk5@maillinator.com"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (4.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "kkkk5"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: ad281b95-7d73-43e5-86cd-51272e811b39) to Async(default) with arguments: 6
+[ActiveJob] Enqueued SendOtpJob (Job ID: 4e6f6337-5aa4-4323-ad7c-3c8fb552d294) to Async(default) with arguments: 6
+Completed 201 Created in 67195ms (Views: 3.9ms | ActiveRecord: 21.1ms | Allocations: 1174733)
+
+
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39] Performing SendOtpJob (Job ID: ad281b95-7d73-43e5-86cd-51272e811b39) from Async(default) enqueued at 2023-07-23T06:31:57Z with arguments: 6
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294] Performing SendOtpJob (Job ID: 4e6f6337-5aa4-4323-ad7c-3c8fb552d294) from Async(default) enqueued at 2023-07-23T06:32:07Z with arguments: 6
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 1263)
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 1261)
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39] UserMailer#otp_email: processed outbound mail in 98.6ms
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294] UserMailer#otp_email: processed outbound mail in 48.3ms
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39] Delivered mail 64bcc99886232_37e22b15853371cc38950@taskcraft-IdeaPad-3-15IML05-U.mail (2555.1ms)
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294] Delivered mail 64bcc998868a3_37e22b1584fb52d839082@taskcraft-IdeaPad-3-15IML05-U.mail (2553.9ms)
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39] Date: Sun, 23 Jul 2023 12:02:56 +0530
+From: from@example.com
+To: kkkk5@maillinator.com
+Message-ID: <64bcc99886232_37e22b15853371cc38950@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcc998840be_37e22b15853371cc38772";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcc998840be_37e22b15853371cc38772
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcc99883c98_37e22b15853371cc38572@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcc998840be_37e22b15853371cc38772
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcc99883c98_37e22b15853371cc38572@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABgUlEQVR4nO2Z
+PY6DMBCFPVBAt0fAN9mjgY+Wm8ANli4UwTsztkNSREqzxhu/aZCsT8Jg3vw8
+Gv9O/DTmrQAGDBgwYMAKwTaKYY2nyWyNcXGhOX1vFWEUGolwALbbjRl04VrA
+3mrC3P27H2e9bCqNv70psJeYoz7/TYE9BYW0lPemwGKM3u9y9RSrQcdlYS5j
+b7VgPnREk2iBrKwsutA/Y6fsrRqsS27L3N1oWnqVhsZ++t6qwpwNgmglD/HQ
+AC1kx6QcL9ypjqqFkJZYH9OwYmrLiPHHP3D2cd9rKwdwCwO0WaCFnBj3p0EL
+ycHgWqEDNOpCPozfOCcj1gJ9iY2hTepGdEwO5T/Ch2DDVcykNQlCZKAnU8Le
+6sAePFWTioN59DLKf4RPwO6eqszOF5kX5q3F7Jwdi57qUZO5USKLunAW5qxJ
+yQg90jkY56EpTAksg/GCf215seipakbSRkkaV4seKSd2eKoS+u61JKAuZMQO
+T9WkP54DPFVgwIABA/YvsV//NeIkIsgH0wAAAABJRU5ErkJggg==
+
+----==_mimepart_64bcc998840be_37e22b15853371cc38772--
+
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294] Date: Sun, 23 Jul 2023 12:02:56 +0530
+From: from@example.com
+To: kkkk5@maillinator.com
+Message-ID: <64bcc998868a3_37e22b1584fb52d839082@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcc99885cee_37e22b1584fb52d8388b8";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcc99885cee_37e22b1584fb52d8388b8
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcc99883eb1_37e22b1584fb52d8386c7@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcc99885cee_37e22b1584fb52d8388b8
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcc99883eb1_37e22b1584fb52d8386c7@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABiElEQVR4nO2Y
+QZKDIBBFwSx05xH0Jh5NOJo3gRtMdrpQ0t1gYs1sMhukis+CUuql6JJ8+nc3
+4Zvx06ivBjBgwIABA1YItuk0xk2mRtm00NweW0WYjkbCyIvvaBpkYS0gtpow
+m/73ch6HivoYy4itOqzdtfH6z4+LiK0iTAcziBZybgosjfl9Dxm18WpLN5Mr
+I7ZasBAdkWEt6JFXvCx0BcRWDdae3RZH52F8f7A0wpmn742tKkw8kh05L0Rp
+dB/fdHdstWCBDequw9LvnBceqVQYoIWcWMoGlif59lZ34czTN8dWDXY6o9nF
+G4kt00ryWHpoISNG3953Igi6mxbOEJIXJnQwMmLtEeuFOTwfQU/8JG4JN1JO
+7NNT5fNYKCXoic7DlBBbRdi1p2qnZ8NHQY8eeSEvlmoDUkVwJAg1iFNFXrgL
+s7F0a6l8cNk2BfZ7SGebLZPJuCkwHqmnKm5pFZPKHSV083Ji155q/PZSPqBe
+yIldeqoqdjBEELMrIDZgwIABAwbsX9gLfjPnJFZN7z4AAAAASUVORK5CYII=
+
+----==_mimepart_64bcc99885cee_37e22b1584fb52d8388b8--
+
+[ActiveJob] [SendOtpJob] [ad281b95-7d73-43e5-86cd-51272e811b39] Error performing SendOtpJob (Job ID: ad281b95-7d73-43e5-86cd-51272e811b39) from Async(default) in 2680.82ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+[ActiveJob] [SendOtpJob] [4e6f6337-5aa4-4323-ad7c-3c8fb552d294] Error performing SendOtpJob (Job ID: 4e6f6337-5aa4-4323-ad7c-3c8fb552d294) from Async(default) in 2680.63ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2023-07-23 12:03:28 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk6", "email"=>"kkkk6@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk6@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk6"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk6"], ["email", "kkkk6@maillinator.com"], ["password_digest", "$2a$12$hUBlTX6WtOu4g1.6xX5OAu1CFtdVW1527FOTCZZz7zqYGYHKBE8AK"], ["created_at", "2023-07-23 06:33:32.492555"], ["updated_at", "2023-07-23 06:33:32.492555"], ["otp", "593652"], ["otp_expiration", "2023-07-23 06:38:32.492622"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: 06405ed9-f808-4976-b4a8-761102763d19) to Async(default) with arguments: 7
+Completed 201 Created in 4084ms (Views: 0.2ms | ActiveRecord: 6.2ms | Allocations: 48869)
+
+
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19] Performing SendOtpJob (Job ID: 06405ed9-f808-4976-b4a8-761102763d19) from Async(default) enqueued at 2023-07-23T06:33:32Z with arguments: 7
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 3.8ms | Allocations: 1884)
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19] UserMailer#otp_email: processed outbound mail in 87.2ms
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19] Delivered mail 64bcc9bc93b73_3c683fbac04e5574667c7@taskcraft-IdeaPad-3-15IML05-U.mail (2441.6ms)
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19] Date: Sun, 23 Jul 2023 12:03:32 +0530
+From: from@example.com
+To: kkkk6@maillinator.com
+Message-ID: <64bcc9bc93b73_3c683fbac04e5574667c7@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcc9bc933ad_3c683fbac04e5574666fd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcc9bc933ad_3c683fbac04e5574666fd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcc9bc925dd_3c683fbac04e5574665d1@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcc9bc933ad_3c683fbac04e5574666fd
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcc9bc925dd_3c683fbac04e5574665d1@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABfklEQVR4nO2Z
+O3LDIBCGQS7kLkcQN/HRJI6Wm4gbOF0obLIPkJ1JYzfAhJ8K7Xwer4X39TOl
+V9Z1Mi8tYMCAAQMGrBMs2rxcnIx3ZPHZMDX3bSDMaiOxmflOT3QUZhHDdwe+
+jYR5/d9TVJSj4NDow7fhsJkDIv75cBe+jYNRBKTPc+UvBVY2a0qchygWrBMD
+7dLeh2+jYEk7Ik1GC9fkIIbzb6yJb8Ngc1FbdjqPjS1rNtyb+zYaRgHhJA9R
+j+R1cih1urlvI2D8soM9JSrMORZM4F1ARqqMcTXwjua3jUuCBEQ3vo2BzbdS
+Db4oD11kiubH4yj6/wn/AJP0T0chTdG6P2yoCxUxmZhFTNK0ZDQg7AU9UkXs
+oakeuWlHLFTHDk01nnRi9o5LAnqkyljWVDkWAu00FhZkpIYYCxofNwsdqRVm
++aqnyNsBd211saypiowRj6kN80JN7NBUtU7Lu7fUqeLGsyL2pKnKorTEgkae
+39r6BgwYMGDAgL2F/QDDyN8kUa5jYwAAAABJRU5ErkJggg==
+
+----==_mimepart_64bcc9bc933ad_3c683fbac04e5574666fd--
+
+[ActiveJob] [SendOtpJob] [06405ed9-f808-4976-b4a8-761102763d19] Error performing SendOtpJob (Job ID: 06405ed9-f808-4976-b4a8-761102763d19) from Async(default) in 2543.07ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2023-07-23 12:05:36 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk6", "email"=>"kkkk6@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk6@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk6"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 422 Unprocessable Entity in 14385ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 350801)
+
+
+Started POST "/users" for ::1 at 2023-07-23 12:06:07 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk8", "email"=>"kkkk6@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk6@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk8"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 422 Unprocessable Entity in 3339ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 7604)
+
+
+Started POST "/users" for ::1 at 2023-07-23 12:06:23 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk8", "email"=>"kkkk8@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk8@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk8"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk8"], ["email", "kkkk8@maillinator.com"], ["password_digest", "$2a$12$ohx2Bx4S.snId0fCCHdf7Oiob8rCS1PQ31lEf.A30ZWzYwzAb4bHG"], ["created_at", "2023-07-23 06:36:26.398024"], ["updated_at", "2023-07-23 06:36:26.398024"], ["otp", "888363"], ["otp_expiration", "2023-07-23 06:41:26.398066"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: 604344f4-c83a-4184-9271-e6d975a8b19e) to Async(default) with arguments: 8
+Completed 201 Created in 3321ms (Views: 0.2ms | ActiveRecord: 10.3ms | Allocations: 9922)
+
+
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e] Performing SendOtpJob (Job ID: 604344f4-c83a-4184-9271-e6d975a8b19e) from Async(default) enqueued at 2023-07-23T06:36:26Z with arguments: 8
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 1263)
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e] UserMailer#otp_email: processed outbound mail in 67.3ms
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e] Delivered mail 64bcca6a764a5_3c683fbac04e557467047@taskcraft-IdeaPad-3-15IML05-U.mail (2846.6ms)
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e] Date: Sun, 23 Jul 2023 12:06:26 +0530
+From: from@example.com
+To: kkkk8@maillinator.com
+Message-ID: <64bcca6a764a5_3c683fbac04e557467047@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bcca6a75f14_3c683fbac04e5574669e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bcca6a75f14_3c683fbac04e5574669e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bcca6a75c33_3c683fbac04e557466870@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bcca6a75f14_3c683fbac04e5574669e
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bcca6a75c33_3c683fbac04e557466870@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABiklEQVR4nO2Y
+PZKDMAyFESmgyxHgJhwNfDRugm+wdFCAVpK9QzLbZBvjWT8VTOz5Mgjbz/qp
++RP7qquPDBgwYMCAAcsE2ylav8uEp7pycaK+3beCMAqJxGSDbtOHTWwZ+FYS
+5uK5ZxFEc1ZBH30evhWH6QZ4+vXnLHwrCCOeOj4TvxRYtJFt7SU6j7NpoZGw
+sOThWykYh4xo0t9u0JjsbaLNwLdisOan27LoyLcmDbPzdt+KwixHcn1lG3AE
+GTjUCykxrdW0ShgXGbh+f0iI3pgQF9JisuLz85TD/zx07XWoWuhz8K0cTPPT
+VdIjXh9MvQxp2KSeXhrEhaSYyYBIBDHOKoi5ZZo6dDASYnLkR9bDz6umq3uM
+01cVnf8n/APs6qnqFaS1c7ibBmghJfbWU9V6IT6eiAtJsVgbhJyVogwQF27D
+pF7Q4NAcqBduwyRn9ZYotRQvqAQvBRYt9lQtOq92LUmm6tHNS4m99lStuScb
+QMiR0mJvPVVrJl1tpbt9AwYMGDBgwP6EfQNfBt4kGYjSSAAAAABJRU5ErkJg
+gg==
+
+----==_mimepart_64bcca6a75f14_3c683fbac04e5574669e--
+
+[ActiveJob] [SendOtpJob] [604344f4-c83a-4184-9271-e6d975a8b19e] Error performing SendOtpJob (Job ID: 604344f4-c83a-4184-9271-e6d975a8b19e) from Async(default) in 2918.32ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2023-07-23 12:09:09 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk8", "email"=>"kkkk8@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk8@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk8"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 422 Unprocessable Entity in 3860ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 8002)
+
+
+Started POST "/users" for ::1 at 2023-07-23 12:09:28 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk9", "email"=>"kkkk9@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk9@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk9"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk9"], ["email", "kkkk9@maillinator.com"], ["password_digest", "$2a$12$je9/CWEVIVudMvLflsA8Nu0Y/6iMEs601hCdl5AICwuwe02Jocb1."], ["created_at", "2023-07-23 06:39:31.745319"], ["updated_at", "2023-07-23 06:39:31.745319"], ["otp", "417850"], ["otp_expiration", "2023-07-23 06:44:31.745358"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: 526f2c11-adc7-4064-a5d6-7e4ea656ef43) to Async(default) with arguments: 9
+Completed 201 Created in 3637ms (Views: 0.2ms | ActiveRecord: 11.0ms | Allocations: 10032)
+
+
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43] Performing SendOtpJob (Job ID: 526f2c11-adc7-4064-a5d6-7e4ea656ef43) from Async(default) enqueued at 2023-07-23T06:39:31Z with arguments: 9
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.5ms | Allocations: 1261)
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43] UserMailer#otp_email: processed outbound mail in 61.0ms
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43] Delivered mail 64bccb23c9a5c_3c683fbac04e557467340@taskcraft-IdeaPad-3-15IML05-U.mail (2459.2ms)
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43] Date: Sun, 23 Jul 2023 12:09:31 +0530
+From: from@example.com
+To: kkkk9@maillinator.com
+Message-ID: <64bccb23c9a5c_3c683fbac04e557467340@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bccb23c9075_3c683fbac04e557467225";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bccb23c9075_3c683fbac04e557467225
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bccb23c8cc5_3c683fbac04e55746714d@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bccb23c9075_3c683fbac04e557467225
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bccb23c8cc5_3c683fbac04e55746714d@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABhUlEQVR4nO2Z
+MZLDIAxFjbcgXY5g38RHwxwtNzE32O3swtZKAseZ2SbbABk+BUPI80RBQfB/
+enqnfffdWw0YMGDAgAGrBNtMaiOPZpnxaaIvHltDmIkXibmzRHHtB51YK4it
+JczH3z3vBVrsEUdmrCO25jBOgB+3Pw9XEVs72PYlZenI+6HAzoEjkrW/EsAn
+BC11xNYKRvFGNHdSjIYf7oJO3CqIrRnMnm7LwvnQiuTSxFE8ttYw3hCj5OPB
+tyU9oq9zunhsLWCi1cKNRcNDStBAu7yUNyz2QlbMT3wa+GkV5RATIKmAds6O
+EQu2eDrLdZX19Iy9kBsLdzEveBs4KUtO8qFdDbG1gdnkGTla9YjejZlIOvhI
+GbHLU9V8aEVSFV1BbA1hT0/1dLadWnoBqi0vljxVdbbv+6miodrKYKKduRhp
+KuAjlcOSr7epmYQ7UlYsrb2ohKC+nn21WD/iK3w89vRUZTRFX88QbqpZsRdP
+1aR/FQaRD0sFsQEDBgwYMGD/wn4BQRXmJOSz8tMAAAAASUVORK5CYII=
+
+----==_mimepart_64bccb23c9075_3c683fbac04e557467225--
+
+[ActiveJob] [SendOtpJob] [526f2c11-adc7-4064-a5d6-7e4ea656ef43] Error performing SendOtpJob (Job ID: 526f2c11-adc7-4064-a5d6-7e4ea656ef43) from Async(default) in 2523.26ms: Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:1088:in `check_auth_response'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:845:in `auth_plain'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `public_send'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:837:in `authenticate'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:670:in `do_start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/net-smtp-0.3.3/lib/net/smtp.rb:611:in `start'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:2145:in `do_delivery'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `block in deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:589:in `block in deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/base.rb:587:in `deliver_mail'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/mail-2.8.1/lib/mail/message.rb:253:in `deliver'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:115:in `block in deliver_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/actionmailer-6.0.6.1/lib/action_mailer/message_delivery.rb:114:in `deliver_now'
+/home/taskcraft/wfh_task/kkklog/app/jobs/send_otp_job.rb:7:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:40:in `block in perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/i18n-1.14.1/lib/i18n.rb:322:in `with_locale'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:25:in `block (4 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `block in instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/notifications.rb:180:in `instrument'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:24:in `block (3 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `block in tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `block in tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/tagged_logging.rb:80:in `tagged'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:45:in `tag_logger'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/logging.rb:21:in `block (2 levels) in <module:Logging>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:39:in `perform_now'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:25:in `block in execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:112:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:43:in `block (4 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/execution_wrapper.rb:91:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/railtie.rb:42:in `block (3 levels) in <class:Railtie>'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `instance_exec'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activesupport-6.0.6.1/lib/active_support/callbacks.rb:139:in `run_callbacks'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/execution.rb:23:in `execute'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activejob-6.0.6.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/taskcraft/.rvm/gems/ruby-2.6.5/gems/concurrent-ruby-1.2.2/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2023-07-23 12:10:10 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk9", "email"=>"kkkk9@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk9@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk9"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 422 Unprocessable Entity in 3547ms (Views: 0.2ms | ActiveRecord: 3.1ms | Allocations: 42367)
+
+
+Started POST "/users" for ::1 at 2023-07-23 12:10:29 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkk10", "email"=>"kkkk10@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkk10@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkk10"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkk10"], ["email", "kkkk10@maillinator.com"], ["password_digest", "$2a$12$/OlgFS4H5yeJftRaEUX/xuND6kcJbCu/vXqWJTLHXYAF5iwb2eXT."], ["created_at", "2023-07-23 06:40:33.878828"], ["updated_at", "2023-07-23 06:40:33.878828"], ["otp", "498793"], ["otp_expiration", "2023-07-23 06:45:33.878891"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (26.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: 4719eb98-6f86-4b5f-bda7-481814f9b695) to Async(default) with arguments: 10
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695] Performing SendOtpJob (Job ID: 4719eb98-6f86-4b5f-bda7-481814f9b695) from Async(default) enqueued at 2023-07-23T06:40:33Z with arguments: 10
+Completed 201 Created in 4252ms (Views: 0.1ms | ActiveRecord: 26.6ms | Allocations: 14241)
+
+
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 3.8ms | Allocations: 1884)
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695] UserMailer#otp_email: processed outbound mail in 76.2ms
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695] Delivered mail 64bccb621260_40e23fc3ec09a0d4419c3@taskcraft-IdeaPad-3-15IML05-U.mail (6475.3ms)
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695] Date: Sun, 23 Jul 2023 12:10:34 +0530
+From: from@example.com
+To: kkkk10@maillinator.com
+Message-ID: <64bccb621260_40e23fc3ec09a0d4419c3@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bccb627f6_40e23fc3ec09a0d4418ec";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bccb627f6_40e23fc3ec09a0d4418ec
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bccb61f3b09_40e23fc3ec09a0d44179c@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bccb627f6_40e23fc3ec09a0d4418ec
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bccb61f3b09_40e23fc3ec09a0d44179c@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABfklEQVR4nO2Z
+PY6EMAyFY6aAjiPATThayNH2JnCDnW4pwOs4YWC2mm2SSHkpULA+CYvgn2ca
+/mR9N+ajBQwYMGDAgBWCbRTXuDXGjWJx0dBk960ijEIjMZv2MGbtxDKo4acA
+32rCXPjuJRYsP3XnQ6MM36rD2l1efpf4ocD+3G+PWx5K9VBg58YyS0m46oJp
+5TiWMnyrBePQEc2+LrjJx8Kqhu4dy+JbNVh7TlsWOQ+NABsNR3bfasMkIEbN
+SP0hokGVwwa9kA7bfDKSZb/owTT5TnXtmOYVGSklRixvnJhGCYgg3W6XzL5V
+hQ1PIm1S7SKhEYrDgoyUEFOt1jNrXXBhJ8qBxgJ8qwgjPsNAVJtGwMA7QS8k
+xa6Zqi8E4QB8LEyY5qXEXjNVPQ+t05eKzuxbTVicqZ5zCxvTEnqkLJh0qoPq
+hR51IScmPdIe/rqZFf/a0mL2NTOKjRJUW3LsNVOV5WJnROiR0mK3mSrFMBhU
+PhTgGzBgwIABA/Yv7Bewzuckz/sjtgAAAABJRU5ErkJggg==
+
+----==_mimepart_64bccb627f6_40e23fc3ec09a0d4418ec--
+
+[ActiveJob] [SendOtpJob] [4719eb98-6f86-4b5f-bda7-481814f9b695] Performed SendOtpJob (Job ID: 4719eb98-6f86-4b5f-bda7-481814f9b695) from Async(default) in 6566.47ms
+Started POST "/users" for ::1 at 2023-07-23 12:12:41 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kkkunal10", "email"=>"kkkunal10@maillinator.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kkkunal10@maillinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kkkunal10"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kkkunal10"], ["email", "kkkunal10@maillinator.com"], ["password_digest", "$2a$12$M2ZVdLmq.gULJhfV1HZBveQxoPLRKu1iDCGjHHpr3eF/zQiY3.E1K"], ["created_at", "2023-07-23 06:42:54.632902"], ["updated_at", "2023-07-23 06:42:54.632902"], ["otp", "879476"], ["otp_expiration", "2023-07-23 06:47:54.632945"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: d604fc54-0017-431a-a898-67f7b364a7ec) to Async(default) with arguments: 11
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec] Performing SendOtpJob (Job ID: d604fc54-0017-431a-a898-67f7b364a7ec) from Async(default) enqueued at 2023-07-23T06:42:54Z with arguments: 11
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+Completed 201 Created in 12977ms (Views: 0.2ms | ActiveRecord: 11.8ms | Allocations: 9529)
+
+
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 1262)
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec] UserMailer#otp_email: processed outbound mail in 67.0ms
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec] Delivered mail 64bccbeeaf8a9_40e23fc3ec09a0d4422a1@taskcraft-IdeaPad-3-15IML05-U.mail (5668.5ms)
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec] Date: Sun, 23 Jul 2023 12:12:54 +0530
+From: from@example.com
+To: kkkunal10@maillinator.com
+Message-ID: <64bccbeeaf8a9_40e23fc3ec09a0d4422a1@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bccbeeaed9d_40e23fc3ec09a0d44213e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bccbeeaed9d_40e23fc3ec09a0d44213e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bccbeeae898_40e23fc3ec09a0d442098@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bccbeeaed9d_40e23fc3ec09a0d44213e
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bccbeeae898_40e23fc3ec09a0d442098@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABgElEQVR4nO2Y
+PY6EMAyFEyhCN0cIN5mjQY42N4Eb7HRDsXhtJyPYrWYbBykvBSLRJ2EpPP+8
+jj5ZX537aAEDBgwYMGAXwTZf1shvs9s6l8pBVz22hjCfG4lZ3tMYdueiHrwu
+EFtLWCr/vSfVQtbHeI3YmsNEButg/FFgfw/IH3nI7KPAypqIWAZu68l71ULg
+srBcI7ZWMMod0aybKFpY9WD4jVWJrRksvN2WhTfTY1Bp6Nqrx9YUpj1SGlkV
+c3xRlkHCvGCJcWs6LVKYH7dd5gWeHDQtRcwLhhj3p+lO8njqfWhaYlWsN2Qk
+Q4zEt+iJtUDkS1rymJ1rYJR9JC7RPECvWhfQI1li/N8v4W0cnWbnDdXZDjs8
+1bDn7Ry5QqA622JnT1Xt1DywoTobY2U2yA6GVmcHLVTD5AKePasifHv4SPWw
+acn2ti8JyuSjwHQVTzVQzkjcLcnUhk7VEjs8Vb0AL1fBjzvqgiF28lRLHppk
+clAvo3ZswIABAwYM2L+wH3Cr5STbtXr/AAAAAElFTkSuQmCC
+
+----==_mimepart_64bccbeeaed9d_40e23fc3ec09a0d44213e--
+
+[ActiveJob] [SendOtpJob] [d604fc54-0017-431a-a898-67f7b364a7ec] Performed SendOtpJob (Job ID: d604fc54-0017-431a-a898-67f7b364a7ec) from Async(default) in 5738.93ms
+Started POST "/users" for ::1 at 2023-07-23 12:14:31 +0530
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kunalmahajan", "email"=>"kunalmahajan1207@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kunalmahajan1207@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kunalmahajan"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kunalmahajan"], ["email", "kunalmahajan1207@gmail.com"], ["password_digest", "$2a$12$Vd2i0/36xfL54oS1CElaZ.aKlJsBPsQ.pskWjvyUdub69AfgVfZj."], ["created_at", "2023-07-23 06:44:37.055203"], ["updated_at", "2023-07-23 06:44:37.055203"], ["otp", "887102"], ["otp_expiration", "2023-07-23 06:49:37.055245"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (9.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: cd3e589b-8b0c-4706-9963-21f65cf8beca) to Async(default) with arguments: 12
+Completed 201 Created in 5891ms (Views: 0.2ms | ActiveRecord: 10.3ms | Allocations: 9939)
+
+
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca] Performing SendOtpJob (Job ID: cd3e589b-8b0c-4706-9963-21f65cf8beca) from Async(default) enqueued at 2023-07-23T06:44:37Z with arguments: 12
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 1261)
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca] UserMailer#otp_email: processed outbound mail in 96.0ms
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca] Delivered mail 64bccc5529267_40e23fc3ec09a0d442561@taskcraft-IdeaPad-3-15IML05-U.mail (6007.4ms)
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca] Date: Sun, 23 Jul 2023 12:14:37 +0530
+From: from@example.com
+To: kunalmahajan1207@gmail.com
+Message-ID: <64bccc5529267_40e23fc3ec09a0d442561@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bccc5528aa5_40e23fc3ec09a0d4424f";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bccc5528aa5_40e23fc3ec09a0d4424f
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bccc55286e3_40e23fc3ec09a0d4423ec@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bccc5528aa5_40e23fc3ec09a0d4424f
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bccc55286e3_40e23fc3ec09a0d4423ec@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABjklEQVR4nO2Z
+MZKDMAxFLSig4wjkJjkacLS9Cb7BpoOCaCXZZNnZJk2MGX8XjtG8GYSJpG9R
+8Tvju3JvDWDAgAEDBiwTbKU4bnIxUatTGNXpvhWEURASo3NMY7+IpTfDkoFv
+JWFT+N+vNfNXq4Y1hkYGvpWHaSw8/lnz8K0YrGEm6p5pbwpsXwzMce+H2X7k
+ffD84ZsC+4NxUESjWys33TUjeTO0GfhWDNbs3Za52ciq8xANz9N9KwvzopHs
+qCAi1faeoZHSYqsmI6clQZRqOKt5qnn0yEgpMWK6SwRMOkksbPJSGl3tmvUC
+j3B9THZcwqAKUwgDjQ8pE6gL6TBVRtRtUgikOo/9wpqgSDIS+kgJMY0FXkg0
+ksXCoUSf71s52KGnKhGgjTxZOTfdMvCtIOzVU7VCYBUiG99KwvaeqmhW36lG
+0lWPzvY5mBUHPTS0uoJGOgVrTCjFszM0Umrs2FNVoRRObchIKbFXT9WpMgol
+uj58abjAI1wf++2pmlpaYmgM+O4MDBgwYMAuh/0A+cvjJNbg4ZgAAAAASUVO
+RK5CYII=
+
+----==_mimepart_64bccc5528aa5_40e23fc3ec09a0d4424f--
+
+[ActiveJob] [SendOtpJob] [cd3e589b-8b0c-4706-9963-21f65cf8beca] Performed SendOtpJob (Job ID: cd3e589b-8b0c-4706-9963-21f65cf8beca) from Async(default) in 6105.19ms
+Started GET "/admin/users/2" for ::1 at 2023-07-23 20:02:05 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/show.html.arb
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = ? AND "active_admin_comments"."namespace" = ?[0m  [["resource_type", "User"], ["resource_id", 2], ["namespace", "admin"]]
+  [1m[36mActiveAdmin::Comment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."resource_id" = ? AND "active_admin_comments"."namespace" = ? LIMIT ? OFFSET ?[0m  [["resource_type", "User"], ["resource_id", 2], ["namespace", "admin"], ["LIMIT", 1], ["OFFSET", 0]]
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/show.html.arb (Duration: 235.9ms | Allocations: 57871)
+Completed 200 OK in 261ms (Views: 244.7ms | ActiveRecord: 2.6ms | Allocations: 65895)
+
+
+Started GET "/admin/users" for ::1 at 2023-07-23 20:02:11 +0530
+Processing by Admin::UsersController#index as HTML
+  Rendering /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" desc LIMIT ? OFFSET ?[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/taskcraft/.rvm/gems/ruby-2.6.5/gems/activeadmin-2.12.0/app/views/active_admin/resource/index.html.arb (Duration: 225.4ms | Allocations: 58359)
+Completed 200 OK in 235ms (Views: 228.7ms | ActiveRecord: 0.5ms | Allocations: 60174)
+
+
+Started POST "/users" for ::1 at 2023-07-23 20:19:50 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kunalmahajan1", "email"=>"kunalmahajan1207@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kunalmahajan1207@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kunalmahajan1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 422 Unprocessable Entity in 385ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 10309)
+
+
+Started POST "/users" for ::1 at 2023-07-23 20:20:14 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"kunalmahajan1", "email"=>"kunalmahajan1207@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kunalmahajan1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at", "otp", "otp_expiration") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kunalmahajan1"], ["email", "kunalmahajan1207@gmail.com"], ["password_digest", "$2a$12$R7pFL7WLkijg1lCOFk1gSOL.sPZk5JDYnlpzoIWZzUfdaF1DVdf6K"], ["created_at", "2023-07-23 14:50:14.893986"], ["updated_at", "2023-07-23 14:50:14.893986"], ["otp", "359018"], ["otp_expiration", "2023-07-23 14:55:14.894082"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+[ActiveJob] Enqueued SendOtpJob (Job ID: c4788df4-3ab4-459f-a5b9-dee116041fe1) to Async(default) with arguments: 13
+Completed 201 Created in 397ms (Views: 0.2ms | ActiveRecord: 11.7ms | Allocations: 12289)
+
+
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1] Performing SendOtpJob (Job ID: c4788df4-3ab4-459f-a5b9-dee116041fe1) from Async(default) enqueued at 2023-07-23T14:50:14Z with arguments: 13
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   ↳ app/jobs/send_otp_job.rb:5:in `perform'
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   Rendering user_mailer/otp_email.html.erb within layouts/mailer
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1]   Rendered user_mailer/otp_email.html.erb within layouts/mailer (Duration: 0.8ms | Allocations: 1263)
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1] UserMailer#otp_email: processed outbound mail in 74.0ms
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1] Delivered mail 64bd3e2725af4_40e23fc3ec09a0d4428e4@taskcraft-IdeaPad-3-15IML05-U.mail (11647.2ms)
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1] Date: Sun, 23 Jul 2023 20:20:15 +0530
+From: from@example.com
+To: kunalmahajan1207@gmail.com
+Message-ID: <64bd3e2725af4_40e23fc3ec09a0d4428e4@taskcraft-IdeaPad-3-15IML05-U.mail>
+Subject: Your OTP QR Code
+Mime-Version: 1.0
+Content-Type: multipart/related;
+ boundary="--==_mimepart_64bd3e2725379_40e23fc3ec09a0d4427b1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_64bd3e2725379_40e23fc3ec09a0d4427b1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Your OTP QR Code</h1>
+<p>Please use the QR code below to get your OTP.</p>
+<img src="cid:64bd3e2724f26_40e23fc3ec09a0d44269f@taskcraft-IdeaPad-3-15IML05-U.mail" />
+
+  </body>
+</html>
+
+----==_mimepart_64bd3e2725379_40e23fc3ec09a0d4427b1
+Content-Type: image/png;
+ filename=qrcode.png
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+ filename=qrcode.png
+Content-ID: <64bd3e2724f26_40e23fc3ec09a0d44269f@taskcraft-IdeaPad-3-15IML05-U.mail>
+
+iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQAAAABRBrPYAAABh0lEQVR4nO2Z
+MZKDMAxFbbaALkeAm3A08NFyE3ODpYNi0Uqyk7Cpso3wjL8KD9G8GWtM5C+J
+hj6x78Z9ZMCAAQMGDFgh2O6zDbsujQvZ0VweW0WYT4XErD+W2+Fcr46tgNhq
+wsLzfz/FXZ40K8qIrTqsPVwYrDcF9u7wNPd0GG8KLNtEevZ8D9G9E0fLshDL
+iK0WjFJFNEsu+HFl76KOroDYqsHax7Ql8vvQXJiy47g8tqowrZHCIE/jRikN
+AvoFU4z4Mmp/JA1YnZcbdw49vwpeCoitGkwaBDlxTQMi1YUk0biR7DA57IXT
+QCUheNWFTbIC6myIabMshdIgs4yoJVMnN9IKXbDDtEbaZJgkaiCeKcpyRy4Y
+Yq+ZaqsjPWmg1y/uHKDOlth5phpGOrI663T16thqwnJvwAqhl5GWTA6V6kUY
+pa88TtuHaLQpsDfzci1pjeTzRx+DTYFlyzPVlAGPagn9gil2nqnOzyYONZIp
+dpqpPkyEeYp/sUtiAwYMGDBgwP6F/QKeIOMk2e4sVAAAAABJRU5ErkJggg==
+
+----==_mimepart_64bd3e2725379_40e23fc3ec09a0d4427b1--
+
+[ActiveJob] [SendOtpJob] [c4788df4-3ab4-459f-a5b9-dee116041fe1] Performed SendOtpJob (Job ID: c4788df4-3ab4-459f-a5b9-dee116041fe1) from Async(default) in 11761.3ms
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateExperts (20230724045128)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "experts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "expert_name" varchar, "expert_skill" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230724045128"]]
+  [1m[35m (27.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCourses (20230724045829)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "course_name" varchar, "description" text, "expert_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_9ed3b29ad8"
+FOREIGN KEY ("expert_id")
+  REFERENCES "experts" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_courses_on_expert_id" ON "courses" ("expert_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230724045829"]]
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
